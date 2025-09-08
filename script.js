@@ -1,52 +1,69 @@
-const gameBoard = (() => {
-    let gameBoard = [
-        '0', '1', '2',
-        '3', '4', '5',
-        '6', '7', '8',];
+const game = (() => {
+    const gameBoard = [0,1,2,3,4,5,6,7,8];
+    const winningCombination = [[0,1,2], [0,3,6], [0,4,8], [1,4,7], [2,5,8], [3,4,5], [6,7,8], [2,4,6]];
 
-    function checkWinner() {
-        
-    }
-
-    function createPlayer(name, mark) {
-        addMarker = (i) => {
-            gameBoard[i] = mark;
-            checkWinner();
-        };
-        return {name, mark, addMarker};
+    function checkWinner(points) {
+        return winningCombination.some(
+            combo => combo.every(i => points.includes(i))
+        );
     };
 
-    const player1 = createPlayer('sukhee', 'o');
-    player1.addMarker(2);
+    function createPlayer(name, marker) {
+        let points = [];
+        addPoint = (i) => {
+            const index = gameBoard.indexOf(i);
+            gameBoard.splice(index, 1);
+            points.push(i);
+            if(checkWinner(points)) {
+                console.log(`${name} won!`);
+            };
+        };
+        getPoint = () => {
+            console.log(points);
+        };
+        return {name, marker, addPoint, getPoint};
+    };
 
-    const player2 = createPlayer('david', 'x');
-    player2.addMarker(1);
+    function togglePlayer() {
+        if (currentPlayer === player1) {
+            currentPlayer = player2;
+        } else {
+            currentPlayer = player1;
+        };
+    };
+    
+    const player1 = createPlayer('sukhee', 'x');
+    const player2 = createPlayer('steve', 'o');
+    let currentPlayer = player1;
 
-/*
-        ylagchiin patternuud
-        1. 0,1,2
-        2. 0,3,6
-        3. 0,4,8
-        4. 1,4,7
-        5. 2,5,8
-        6. 3,4,5
-        7. 6,7,8
-        8. 2,4,6
+    const grid = document.querySelectorAll('.cell');
 
-        - if gameBoard(0,1,2 === marker) {
-            winner
-        }
-*/
-    return {gameBoard};
+    grid.forEach((cell, i) => {
+        cell.addEventListener('click', (e)=> {
+            if(gameBoard.includes(i)) {
+                e.target.textContent = currentPlayer.marker;
+                currentPlayer.addPoint(i);
+                togglePlayer();
+                console.log(gameBoard);
+            } else {
+                console.log("CHOOSE AGAIN!")
+            }
+        });
+    });
+
+    return {gameBoard, createPlayer, currentPlayer};
 })();
 
 
 
 
 
-console.log(gameBoard);
-
 /* 
+012
+345
+678
+
+div deer daraad 
 
 - player uud uuriin gesen mark tai bn
 - player uud daraallasan songolt hiij bolohgui

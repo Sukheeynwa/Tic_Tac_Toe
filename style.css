@@ -3,3 +3,25 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+#game-container {
+    height: 300px;
+    width: 300px;
+}
+
+#game-container > div {
+    display: flex;
+}
+
+#game-container > div > div {
+    border: solid 1px black;
+    height: 100px;
+    width: 100px;
+}
+
+.cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+}
