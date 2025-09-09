@@ -3,10 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Tic Tac Toe Game</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div id="status">
+        <h1 id="status-title"></h1>
+        <div class="status-cell"></div>
+    </div>
     <div id="game-container">
         <div class="row">
             <div class="cell"></div>
@@ -24,6 +28,12 @@
             <div class="cell"></div>
         </div>
     </div>
+    <dialog id="winner-modal">
+        <div id="modal-content">
+            <div class="title"></div>
+            <button id="reset-button">TRY AGAIN</button>
+        </div>
+    </dialog>
     <script src="script.js"></script>
 </body>
 </html>
