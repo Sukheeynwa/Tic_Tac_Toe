@@ -7,33 +7,24 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="status">
-        <h1 id="status-title"></h1>
-        <div class="status-cell"></div>
+    <div id="start-menu">
+        <button id="start-game">START GAME</button>
     </div>
-    <div id="game-container">
-        <div class="row">
-            <div class="cell"></div>
-            <div class="cell"></div>
-            <div class="cell"></div>
+    <div id="game">
+        <div id="status">
+            <h1 id="status-title"></h1>
+            <div class="status-cell"></div>
         </div>
-        <div class="row">
-            <div class="cell"></div>
-            <div class="cell"></div>
-            <div class="cell"></div>
+        <div id="game-container">
+          
         </div>
-        <div class="row">
-            <div class="cell"></div>
-            <div class="cell"></div>
-            <div class="cell"></div>
-        </div>
+        <dialog id="winner-modal">
+            <div id="modal-content">
+                <div class="title"></div>
+                <button id="reset-button">TRY AGAIN</button>
+            </div>
+        </dialog>
     </div>
-    <dialog id="winner-modal">
-        <div id="modal-content">
-            <div class="title"></div>
-            <button id="reset-button">TRY AGAIN</button>
-        </div>
-    </dialog>
     <script src="script.js"></script>
 </body>
 </html>
